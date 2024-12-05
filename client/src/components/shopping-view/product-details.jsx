@@ -13,7 +13,6 @@ import StarRatingComponent from "../common/star-rating";
 import { useEffect, useState } from "react";
 import { addReview, getReviews } from "@/store/shop/review-slice";
 
-// Define o componente ProductDetailsDialog que recebe open, setOpen e productDetails como propriedades
 function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const [reviewMsg, setReviewMsg] = useState("");
   const [rating, setRating] = useState(0);
@@ -24,13 +23,12 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
 
   const { toast } = useToast();
 
-  // Função para lidar com a mudança de rating
   function handleRatingChange(getRating) {
     console.log(getRating, "getRating");
+
     setRating(getRating);
   }
 
-  // Função para adicionar o produto ao carrinho
   function handleAddToCart(getCurrentProductId, getTotalStock) {
     let getCartItems = cartItems.items || [];
 
@@ -45,6 +43,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
             title: `Only ${getQuantity} quantity can be added for this item`,
             variant: "destructive",
           });
+
           return;
         }
       }
@@ -65,7 +64,6 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     });
   }
 
-  // Função para fechar o diálogo
   function handleDialogClose() {
     setOpen(false);
     dispatch(setProductDetails());
@@ -73,7 +71,6 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     setReviewMsg("");
   }
 
-  // Função para adicionar uma review
   function handleAddReview() {
     dispatch(
       addReview({
@@ -95,14 +92,12 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
     });
   }
 
-  // useEffect para buscar as reviews quando productDetails muda
   useEffect(() => {
     if (productDetails !== null) dispatch(getReviews(productDetails?._id));
   }, [productDetails]);
 
   console.log(reviews, "reviews");
 
-  // Calcula a média das reviews
   const averageReview =
     reviews && reviews.length > 0
       ? reviews.reduce((sum, reviewItem) => sum + reviewItem.reviewValue, 0) /
@@ -175,7 +170,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
             <div className="grid gap-6">
               {reviews && reviews.length > 0 ? (
                 reviews.map((reviewItem) => (
-                  <div key={reviewItem._id} className="flex gap-4">
+                  <div className="flex gap-4">
                     <Avatar className="w-10 h-10 border">
                       <AvatarFallback>
                         {reviewItem?.userName[0].toUpperCase()}
@@ -226,5 +221,4 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   );
 }
 
-// Exporta o componente ProductDetailsDialog como padrão
 export default ProductDetailsDialog;

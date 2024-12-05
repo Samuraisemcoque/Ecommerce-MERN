@@ -1,21 +1,13 @@
-// Importa o hook useSelector da biblioteca "react-redux"
 import { useSelector } from "react-redux";
-// Importa o componente Badge de um caminho relativo
 import { Badge } from "../ui/badge";
-// Importa o componente DialogContent de um caminho relativo
 import { DialogContent } from "../ui/dialog";
-// Importa o componente Label de um caminho relativo
 import { Label } from "../ui/label";
-// Importa o componente Separator de um caminho relativo
 import { Separator } from "../ui/separator";
 
-// Define o componente ShoppingOrderDetailsView que recebe orderDetails como propriedade
 function ShoppingOrderDetailsView({ orderDetails }) {
-  // Obtém o usuário do estado de autenticação do Redux
   const { user } = useSelector((state) => state.auth);
 
   return (
-    // Componente DialogContent com largura máxima de 600px em telas pequenas
     <DialogContent className="sm:max-w-[600px]">
       <div className="grid gap-6">
         <div className="grid gap-2">
@@ -63,7 +55,7 @@ function ShoppingOrderDetailsView({ orderDetails }) {
             <ul className="grid gap-3">
               {orderDetails?.cartItems && orderDetails?.cartItems.length > 0
                 ? orderDetails?.cartItems.map((item) => (
-                    <li key={item.id} className="flex items-center justify-between">
+                    <li className="flex items-center justify-between">
                       <span>Title: {item.title}</span>
                       <span>Quantity: {item.quantity}</span>
                       <span>Price: ${item.price}</span>
@@ -91,5 +83,4 @@ function ShoppingOrderDetailsView({ orderDetails }) {
   );
 }
 
-// Exporta o componente ShoppingOrderDetailsView como padrão
 export default ShoppingOrderDetailsView;

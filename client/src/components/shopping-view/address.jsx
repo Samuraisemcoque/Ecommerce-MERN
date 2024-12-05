@@ -1,26 +1,17 @@
-// Importa os hooks useEffect e useState da biblioteca "react"
 import { useEffect, useState } from "react";
-// Importa o componente CommonForm de um caminho relativo
 import CommonForm from "../common/form";
-// Importa os componentes Card, CardContent, CardHeader e CardTitle de um caminho relativo
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-// Importa os controles do formulário de endereço da configuração
 import { addressFormControls } from "@/config";
-// Importa os hooks useDispatch e useSelector da biblioteca "react-redux"
 import { useDispatch, useSelector } from "react-redux";
-// Importa as ações do slice de endereços da loja
 import {
   addNewAddress,
   deleteAddress,
   editaAddress,
   fetchAllAddresses,
 } from "@/store/shop/address-slice";
-// Importa o componente AddressCard de um caminho relativo
 import AddressCard from "./address-card";
-// Importa o hook useToast de um caminho relativo
 import { useToast } from "../ui/use-toast";
 
-// Define os dados iniciais do formulário de endereço
 const initialAddressFormData = {
   address: "",
   city: "",
@@ -29,26 +20,17 @@ const initialAddressFormData = {
   notes: "",
 };
 
-// Define o componente Address que recebe setCurrentSelectedAddress e selectedId como propriedades
 function Address({ setCurrentSelectedAddress, selectedId }) {
-  // Define o estado formData com os dados iniciais do formulário
   const [formData, setFormData] = useState(initialAddressFormData);
-  // Define o estado currentEditedId com valor inicial null
   const [currentEditedId, setCurrentEditedId] = useState(null);
-  // Obtém a função dispatch do Redux
   const dispatch = useDispatch();
-  // Obtém o usuário do estado de autenticação do Redux
   const { user } = useSelector((state) => state.auth);
-  // Obtém a lista de endereços do estado shopAddress do Redux
   const { addressList } = useSelector((state) => state.shopAddress);
-  // Obtém a função toast do hook useToast
   const { toast } = useToast();
 
-  // Função para gerenciar o envio do formulário de endereço
   function handleManageAddress(event) {
     event.preventDefault();
 
-    // Limita o usuário a adicionar no máximo 3 endereços
     if (addressList.length >= 3 && currentEditedId === null) {
       setFormData(initialAddressFormData);
       toast({
@@ -59,7 +41,6 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
       return;
     }
 
-    // Atualiza ou adiciona um endereço, dependendo se currentEditedId é nulo
     currentEditedId !== null
       ? dispatch(
           editaAddress({
@@ -93,7 +74,6 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
         });
   }
 
-  // Função para deletar um endereço
   function handleDeleteAddress(getCurrentAddress) {
     dispatch(
       deleteAddress({ userId: user?.id, addressId: getCurrentAddress._id })
@@ -107,27 +87,24 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
     });
   }
 
-  // Função para editar um endereço
-  function handleEditAddress(getCurrentAddress) {
-    setCurrentEditedId(getCurrentAddress?._id);
+  function handleEditAddress(getCuurentAddress) {
+    setCurrentEditedId(getCuurentAddress?._id);
     setFormData({
       ...formData,
-      address: getCurrentAddress?.address,
-      city: getCurrentAddress?.city,
-      phone: getCurrentAddress?.phone,
-      pincode: getCurrentAddress?.pincode,
-      notes: getCurrentAddress?.notes,
+      address: getCuurentAddress?.address,
+      city: getCuurentAddress?.city,
+      phone: getCuurentAddress?.phone,
+      pincode: getCuurentAddress?.pincode,
+      notes: getCuurentAddress?.notes,
     });
   }
 
-  // Função para verificar se o formulário é válido
   function isFormValid() {
     return Object.keys(formData)
       .map((key) => formData[key].trim() !== "")
       .every((item) => item);
   }
 
-  // useEffect para buscar todos os endereços ao carregar o componente
   useEffect(() => {
     dispatch(fetchAllAddresses(user?.id));
   }, [dispatch]);
@@ -168,5 +145,4 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
   );
 }
 
-// Exporta o componente Address como padrão
 export default Address;

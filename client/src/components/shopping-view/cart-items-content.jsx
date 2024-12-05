@@ -1,30 +1,18 @@
-// Importa os ícones Minus, Plus e Trash da biblioteca "lucide-react"
 import { Minus, Plus, Trash } from "lucide-react";
-// Importa o componente Button de um caminho relativo
 import { Button } from "../ui/button";
-// Importa os hooks useDispatch e useSelector da biblioteca "react-redux"
 import { useDispatch, useSelector } from "react-redux";
-// Importa as ações deleteCartItem e updateCartQuantity do slice de carrinho de compras
 import { deleteCartItem, updateCartQuantity } from "@/store/shop/cart-slice";
-// Importa o hook useToast de um caminho relativo
 import { useToast } from "../ui/use-toast";
 
-// Define o componente UserCartItemsContent que recebe cartItem como propriedade
 function UserCartItemsContent({ cartItem }) {
-  // Obtém o usuário do estado de autenticação do Redux
   const { user } = useSelector((state) => state.auth);
-  // Obtém os itens do carrinho do estado shopCart do Redux
   const { cartItems } = useSelector((state) => state.shopCart);
-  // Obtém a lista de produtos do estado shopProducts do Redux
   const { productList } = useSelector((state) => state.shopProducts);
-  // Obtém a função dispatch do Redux
   const dispatch = useDispatch();
-  // Obtém a função toast do hook useToast
   const { toast } = useToast();
 
-  // Função para atualizar a quantidade de itens no carrinho
   function handleUpdateQuantity(getCartItem, typeOfAction) {
-    if (typeOfAction === "plus") {
+    if (typeOfAction == "plus") {
       let getCartItems = cartItems.items || [];
 
       if (getCartItems.length) {
@@ -71,7 +59,6 @@ function UserCartItemsContent({ cartItem }) {
     });
   }
 
-  // Função para deletar um item do carrinho
   function handleCartItemDelete(getCartItem) {
     dispatch(
       deleteCartItem({ userId: user?.id, productId: getCartItem?.productId })
@@ -85,7 +72,6 @@ function UserCartItemsContent({ cartItem }) {
   }
 
   return (
-    // Estrutura do item do carrinho com imagem, título, controle de quantidade e preço
     <div className="flex items-center space-x-4">
       <img
         src={cartItem?.image}
@@ -113,7 +99,7 @@ function UserCartItemsContent({ cartItem }) {
             onClick={() => handleUpdateQuantity(cartItem, "plus")}
           >
             <Plus className="w-4 h-4" />
-            <span className="sr-only">Increase</span>
+            <span className="sr-only">Decrease</span>
           </Button>
         </div>
       </div>
@@ -135,5 +121,4 @@ function UserCartItemsContent({ cartItem }) {
   );
 }
 
-// Exporta o componente UserCartItemsContent como padrão
 export default UserCartItemsContent;
