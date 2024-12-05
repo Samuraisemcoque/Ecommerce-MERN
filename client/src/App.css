@@ -1,0 +1,44 @@
+#root {
+  max-width: 1280px; /* Define a largura máxima do contêiner root */
+  margin: 0 auto; /* Centraliza o contêiner horizontalmente */
+  padding: 2rem; /* Adiciona padding em volta do contêiner */
+  text-align: center; /* Centraliza o texto */
+}
+
+.logo {
+  height: 6em; /* Define a altura do logotipo */
+  padding: 1.5em; /* Adiciona padding em volta do logotipo */
+  will-change: filter; /* Indica que a propriedade filter irá mudar */
+  transition: filter 300ms; /* Adiciona uma transição de 300ms para a propriedade filter */
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa); /* Adiciona um drop-shadow quando o logotipo é hover */
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa); /* Adiciona um drop-shadow diferente para o logotipo com classe react quando é hover */
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg); /* Define o estado inicial da animação de rotação */
+  }
+  to {
+    transform: rotate(360deg); /* Define o estado final da animação de rotação */
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear; /* Adiciona uma animação de rotação contínua ao segundo link com a classe logo */
+  }
+}
+
+.card {
+  padding: 2em; /* Adiciona padding em volta do cartão */
+}
+
+.read-the-docs {
+  color: #888; /* Define a cor do texto dos documentos de leitura */
+}

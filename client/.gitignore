@@ -1,0 +1,29 @@
+# Ignora arquivos de logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Ignora a pasta node_modules
+node_modules
+
+# Ignora diretórios de build
+dist
+dist-ssr
+
+# Ignora arquivos de configuração locais
+*.local
+
+# Ignora diretórios e arquivos de editores
+.vscode/*               # Ignora todos os arquivos e pastas dentro do diretório .vscode
+!.vscode/extensions.json # Exceto extensions.json dentro do diretório .vscode
+.idea                   # Ignora os arquivos e pastas do WebStorm/IntelliJ IDEA
+.DS_Store               # Ignora o arquivo .DS_Store do macOS
+*.suo                   # Ignora arquivos de soluções do Visual Studio
+*.ntvs*                 # Ignora arquivos de projetos do Node.js Tools for Visual Studio
+*.njsproj               # Ignora arquivos de projetos do Node.js para Visual Studio
+*.sln                   # Ignora arquivos de soluções do Visual Studio
+*.sw?                   # Ignora arquivos temporários do Vim

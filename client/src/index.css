@@ -1,0 +1,69 @@
+@tailwind base; /* Importa os estilos base do Tailwind CSS */
+@tailwind components; /* Importa os componentes do Tailwind CSS */
+@tailwind utilities; /* Importa as utilidades do Tailwind CSS */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Cor de fundo padrão */
+    --foreground: 222.2 84% 4.9%; /* Cor de primeiro plano padrão */
+    --card: 0 0% 100%; /* Cor do cartão */
+    --card-foreground: 222.2 84% 4.9%; /* Cor de primeiro plano do cartão */
+    --popover: 0 0% 100%; /* Cor do popover */
+    --popover-foreground: 222.2 84% 4.9%; /* Cor de primeiro plano do popover */
+    --primary: 222.2 47.4% 11.2%; /* Cor primária */
+    --primary-foreground: 210 40% 98%; /* Cor de primeiro plano primária */
+    --secondary: 210 40% 96.1%; /* Cor secundária */
+    --secondary-foreground: 222.2 47.4% 11.2%; /* Cor de primeiro plano secundária */
+    --muted: 210 40% 96.1%; /* Cor suavizada */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Cor de primeiro plano suavizada */
+    --accent: 210 40% 96.1%; /* Cor de destaque */
+    --accent-foreground: 222.2 47.4% 11.2%; /* Cor de primeiro plano de destaque */
+    --destructive: 0 84.2% 60.2%; /* Cor destrutiva */
+    --destructive-foreground: 210 40% 98%; /* Cor de primeiro plano destrutiva */
+    --border: 214.3 31.8% 91.4%; /* Cor da borda */
+    --input: 214.3 31.8% 91.4%; /* Cor de entrada */
+    --ring: 222.2 84% 4.9%; /* Cor do anel */
+    --radius: 0.5rem; /* Raio da borda */
+    --chart-1: 12 76% 61%; /* Cor do gráfico 1 */
+    --chart-2: 173 58% 39%; /* Cor do gráfico 2 */
+    --chart-3: 197 37% 24%; /* Cor do gráfico 3 */
+    --chart-4: 43 74% 66%; /* Cor do gráfico 4 */
+    --chart-5: 27 87% 67%; /* Cor do gráfico 5 */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%; /* Cor de fundo em modo escuro */
+    --foreground: 210 40% 98%; /* Cor de primeiro plano em modo escuro */
+    --card: 222.2 84% 4.9%; /* Cor do cartão em modo escuro */
+    --card-foreground: 210 40% 98%; /* Cor de primeiro plano do cartão em modo escuro */
+    --popover: 222.2 84% 4.9%; /* Cor do popover em modo escuro */
+    --popover-foreground: 210 40% 98%; /* Cor de primeiro plano do popover em modo escuro */
+    --primary: 210 40% 98%; /* Cor primária em modo escuro */
+    --primary-foreground: 222.2 47.4% 11.2%; /* Cor de primeiro plano primária em modo escuro */
+    --secondary: 217.2 32.6% 17.5%; /* Cor secundária em modo escuro */
+    --secondary-foreground: 210 40% 98%; /* Cor de primeiro plano secundária em modo escuro */
+    --muted: 217.2 32.6% 17.5%; /* Cor suavizada em modo escuro */
+    --muted-foreground: 215 20.2% 65.1%; /* Cor de primeiro plano suavizada em modo escuro */
+    --accent: 217.2 32.6% 17.5%; /* Cor de destaque em modo escuro */
+    --accent-foreground: 210 40% 98%; /* Cor de primeiro plano de destaque em modo escuro */
+    --destructive: 0 62.8% 30.6%; /* Cor destrutiva em modo escuro */
+    --destructive-foreground: 210 40% 98%; /* Cor de primeiro plano destrutiva em modo escuro */
+    --border: 217.2 32.6% 17.5%; /* Cor da borda em modo escuro */
+    --input: 217.2 32.6% 17.5%; /* Cor de entrada em modo escuro */
+    --ring: 212.7 26.8% 83.9%; /* Cor do anel em modo escuro */
+    --chart-1: 220 70% 50%; /* Cor do gráfico 1 em modo escuro */
+    --chart-2: 160 60% 45%; /* Cor do gráfico 2 em modo escuro */
+    --chart-3: 30 80% 55%; /* Cor do gráfico 3 em modo escuro */
+    --chart-4: 280 65% 60%; /* Cor do gráfico 4 em modo escuro */
+    --chart-5: 340 75% 55%; /* Cor do gráfico 5 em modo escuro */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border; /* Aplica a cor da borda definida nas variáveis CSS */
+  }
+  body {
+    @apply bg-background text-foreground; /* Aplica as cores de fundo e texto definidas nas variáveis CSS */
+  }
+}
